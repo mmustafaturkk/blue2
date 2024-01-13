@@ -1,0 +1,9 @@
+/********** GENERATED on 11/20/2023 at 11:58:39 by CB9980000012**************/
+ @OData.entitySet.name: 'A_SuplrInvcSeldInbDeliveryNote' 
+ @OData.entityType.name: 'A_SuplrInvcSeldInbDeliveryNoteType' 
+ define root abstract entity ZA_SUPLRINVCSELDINBDELIVERYNOT { 
+ key SupplierInvoice : abap.char( 10 ) ; 
+ key FiscalYear : abap.numc( 4 ) ; 
+ key InboundDeliveryNote : abap.char( 16 ) ; 
+ 
+ } 

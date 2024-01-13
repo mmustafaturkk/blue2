@@ -1,0 +1,4 @@
+define service ZUI_CASHFLOWTBLE {
+  expose ZC_CASHF_TABLE_S as CashFlowTableAll;
+  expose ZC_CASHF_TABLE as CashFlowTable;
+}

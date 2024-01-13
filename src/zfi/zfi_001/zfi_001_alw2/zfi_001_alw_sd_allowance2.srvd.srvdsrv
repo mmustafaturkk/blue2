@@ -1,0 +1,5 @@
+@EndUserText.label: 'Allowance App Service Definition'
+define service ZFI_001_ALW_SD_ALLOWANCE2 {
+  expose ZFI_001_ALW_P_HEADER2 as Header;
+  expose ZFI_001_ALW_P_ITEM2   as Item;
+}

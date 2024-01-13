@@ -1,0 +1,85 @@
+managed implementation in class ZBP_R_FI_002_3_T_CF2 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_FI_002_3_T_CF2
+persistent table zfi_002_3_t_cf2
+draft table ZFI_002_3_T_CF2D
+etag master Locallastchangedat
+lock master total etag Lastchangedat
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Fyear,
+   Fperiod,
+   Compcode;
+
+  field ( readonly )
+   Localcreatedat,
+   Localcreatedby,
+   Lastchangedat,
+   Locallastchangedat,
+   Locallastchangedby;
+
+  field ( readonly : update )
+   Fyear,
+   Fperiod,
+   Compcode;
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZFI_002_3_T_CF2
+  {
+    Fyear = fyear;
+    Fperiod = fperiod;
+    Compcode = compcode;
+    Currency = currency;
+    Consultancy = consultancy;
+    Epc = epc;
+    Intercompany = intercompany;
+    IndirectIncome = indirect_income;
+    UnbilledRevenue = unbilled_revenue;
+    OthersIncome = others_income;
+    Payroll = payroll;
+    Freelancers = freelancers;
+    ManpowerSupply = manpower_supply;
+    SubcontractedServices = subcontracted_services;
+    TravelAccomodation = travel_accomodation;
+    DailyAllowance = daily_allowance;
+    ProjectOtherExpenses = project_other_expenses;
+    IntercompanyCross = intercompany_cross;
+    ItCogs = it_cogs;
+    BillableInsurance = billable_insurance;
+    OthersCogs = others_cogs;
+    Administration = administration;
+    Finance = finance;
+    HrRecruitment = hr_recruitment;
+    ItOverhead = it_overhead;
+    Charity = charity;
+    CashPayment = cash_payment;
+    CashReceipts = cash_receipts;
+    CashBalance = cash_balance;
+    VAT_refund = VAT_refund;
+    loans_received_from_banks = loans_received_from_banks;
+    Other_Cash_Receipt = Other_Cash_Receipt;
+    Business_Dev_Marketing = Business_Dev_Marketing;
+    VAT_Payment = VAT_Payment;
+    Loans_repaid_banks = Loans_repaid_banks;
+    Profit_tax = Profit_tax;
+    Others_Payments = Others_Payments;
+    Localcreatedby = localcreatedby;
+    Localcreatedat = localcreatedat;
+    Locallastchangedby = locallastchangedby;
+    Locallastchangedat = locallastchangedat;
+    Lastchangedat = lastchangedat;
+  }
+}

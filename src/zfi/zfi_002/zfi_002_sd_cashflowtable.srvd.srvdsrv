@@ -1,0 +1,4 @@
+define service ZFI_002_SD_CASHFLOWTABLE {
+  expose ZFI_002_PV_CASHFLOWTABLE_S as CashFlowTableAll;
+  expose ZFI_002_PV_CASHFLOWTABLE as CashFlowTable;
+}

@@ -1,0 +1,395 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'ZC_FI_002_T_CSHFL2', 
+//    typeNamePlural: 'ZC_FI_002_T_CSHFL2s'
+typeNamePlural: 'Cash Flow Bakım Tablosu'
+  }
+}
+annotate view ZC_FI_002_T_CSHFL2 with
+{
+  @UI.facet: [ { 
+    id: 'idIdentification', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'ZC_FI_002_T_CSHFL2', 
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #MEDIUM, 
+    label: 'Fyear'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Fyear'
+  } ]
+  Fyear; 
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #MEDIUM, 
+    label: 'Fperiod'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Fperiod'
+  } ]
+  Fperiod;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #MEDIUM, 
+    label: 'Compcode'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Compcode'
+  } ]
+  Compcode;
+  
+//  @UI.lineItem: [ {
+//    position: 40 , 
+//    importance: #MEDIUM, 
+//    label: 'Proincome'
+//  } ]
+//  @UI.identification: [ {
+//    position: 40 , 
+//    label: 'Proincome'
+//  } ]
+//  Proincome;
+  
+//  @UI.lineItem: [ {
+//    position: 50 , 
+//    importance: #MEDIUM, 
+//    label: 'Procost'
+//  } ]
+//  @UI.identification: [ {
+//    position: 50 , 
+//    label: 'Procost'
+//  } ]
+//  Procost;
+  
+//  @UI.lineItem: [ {
+//    position: 60 , 
+//    importance: #MEDIUM, 
+//    label: 'Proftax'
+//  } ]
+//  @UI.identification: [ {
+//    position: 60 , 
+//    label: 'Proftax'
+//  } ]
+//  Proftax;
+  
+//  @UI.lineItem: [ {
+//    position: 70 , 
+//    importance: #MEDIUM, 
+//    label: 'Vatpay'
+//  } ]
+//  @UI.identification: [ {
+//    position: 70 , 
+//    label: 'Vatpay'
+//  } ]
+//  Vatpay;
+  
+//  @UI.lineItem: [ {
+//    position: 80 , 
+//    importance: #MEDIUM, 
+//    label: 'Vatrefund'
+//  } ]
+//  @UI.identification: [ {
+//    position: 80 , 
+//    label: 'Vatrefund'
+//  } ]
+//  Vatrefund;
+  
+  @UI.lineItem: [ {
+    position: 90 , 
+    importance: #MEDIUM, 
+    label: 'Currency'
+  } ]
+  @UI.identification: [ {
+    position: 90 , 
+    label: 'Currency'
+  } ]
+  Currency;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+  
+//    @UI.lineItem: [ {
+//    position: 100 , 
+//    importance: #MEDIUM, 
+//    label: 'Consultancy'
+//  } ]
+//    @UI.identification: [ {
+//    position: 100 , 
+//    label: 'Consultancy'
+//  } ]
+//consultancy;
+//  
+//  
+//      @UI.lineItem: [ {
+//    position: 110 , 
+//    importance: #MEDIUM, 
+//    label: 'EPC'
+//  } ]
+//    @UI.identification: [ {
+//    position: 110 , 
+//    label: 'EPC'
+//  } ]
+//epc;
+//
+//      @UI.lineItem: [ {
+//    position: 120 , 
+//    importance: #MEDIUM, 
+//    label: 'Intercompany'
+//  } ]
+//    @UI.identification: [ {
+//    position: 120 , 
+//    label: 'Intercompany'
+//  } ]
+//intercompany;
+//
+//      @UI.lineItem: [ {
+//    position: 130 , 
+//    importance: #MEDIUM, 
+//    label: 'Indirect_Income'
+//  } ]
+//    @UI.identification: [ {
+//    position: 130 , 
+//    label: 'Indirect_Income'
+//  } ]
+//indirect_income;
+//
+//      @UI.lineItem: [ {
+//    position: 140 , 
+//    importance: #MEDIUM, 
+//    label: 'Unbilled_Revenue'
+//  } ]
+//    @UI.identification: [ {
+//    position: 140 , 
+//    label: 'Unbilled_Revenue'
+//  } ]
+//unbilled_revenue;
+//
+//      @UI.lineItem: [ {
+//    position: 150 , 
+//    importance: #MEDIUM, 
+//    label: 'Others_income'
+//  } ]
+//    @UI.identification: [ {
+//    position: 150 , 
+//    label: 'Others_income'
+//  } ]
+//others_income;
+//
+//      @UI.lineItem: [ {
+//    position: 160 , 
+//    importance: #MEDIUM, 
+//    label: 'Payroll'
+//  } ]
+//    @UI.identification: [ {
+//    position: 160 , 
+//    label: 'Payroll'
+//  } ]
+//payroll;
+//
+//      @UI.lineItem: [ {
+//    position: 170 , 
+//    importance: #MEDIUM, 
+//    label: 'Freelancers'
+//  } ]
+//    @UI.identification: [ {
+//    position: 170 , 
+//    label: 'Freelancers'
+//  } ]
+//freelancers;
+//
+//      @UI.lineItem: [ {
+//    position: 170 , 
+//    importance: #MEDIUM, 
+//    label: 'Manpower_supply'
+//  } ]
+//    @UI.identification: [ {
+//    position: 170 , 
+//    label: 'Manpower_supply'
+//  } ]
+//manpower_supply;
+//
+//      @UI.lineItem: [ {
+//    position: 180 , 
+//    importance: #MEDIUM, 
+//    label: 'Subcontracted_Services'
+//  } ]
+//    @UI.identification: [ {
+//    position: 180 , 
+//    label: 'Subcontracted_Services'
+//  } ]
+//subcontracted_services;
+//
+//      @UI.lineItem: [ {
+//    position: 190 , 
+//    importance: #MEDIUM, 
+//    label: 'Travel_Accomodation'
+//  } ]
+//    @UI.identification: [ {
+//    position: 190 , 
+//    label: 'Travel_Accomodation'
+//  } ]
+//travel_accomodation;
+//
+//      @UI.lineItem: [ {
+//    position: 200 , 
+//    importance: #MEDIUM, 
+//    label: 'Daily_Allowance'
+//  } ]
+//    @UI.identification: [ {
+//    position: 200 , 
+//    label: 'Daily_Allowance'
+//  } ]
+//daily_allowance;
+//
+//      @UI.lineItem: [ {
+//    position: 210 , 
+//    importance: #MEDIUM, 
+//    label: 'Project_Other_Expenses'
+//  } ]
+//    @UI.identification: [ {
+//    position: 210 , 
+//    label: 'Project_Other_Expenses'
+//  } ]
+//project_other_expenses;
+//
+//      @UI.lineItem: [ {
+//    position: 220 , 
+//    importance: #MEDIUM, 
+//    label: 'Intercompany_Cross'
+//  } ]
+//    @UI.identification: [ {
+//    position: 220 , 
+//    label: 'Intercompany_Cross'
+//  } ]
+//intercompany_cross;
+//
+//      @UI.lineItem: [ {
+//    position: 230 , 
+//    importance: #MEDIUM, 
+//    label: 'IT_COGS'
+//  } ]
+//    @UI.identification: [ {
+//    position: 230 , 
+//    label: 'IT_COGS'
+//  } ]
+//it_cogs;
+//
+//      @UI.lineItem: [ {
+//    position: 240 , 
+//    importance: #MEDIUM, 
+//    label: 'Billable_Insurance'
+//  } ]
+//    @UI.identification: [ {
+//    position: 240 , 
+//    label: 'Billable_Insurance'
+//  } ]
+//billable_insurance;
+//
+//      @UI.lineItem: [ {
+//    position: 250 , 
+//    importance: #MEDIUM, 
+//    label: 'Others_COGS'
+//  } ]
+//    @UI.identification: [ {
+//    position: 250 , 
+//    label: 'Others_COGS'
+//  } ]
+//others_cogs;
+//
+//      @UI.lineItem: [ {
+//    position: 260 , 
+//    importance: #MEDIUM, 
+//    label: 'Administration'
+//  } ]
+//    @UI.identification: [ {
+//    position: 260 , 
+//    label: 'Administration'
+//  } ]
+//administration;
+//
+//      @UI.lineItem: [ {
+//    position: 270 , 
+//    importance: #MEDIUM, 
+//    label: 'Finance'
+//  } ]
+//    @UI.identification: [ {
+//    position: 270 , 
+//    label: 'Finance'
+//  } ]
+//finance;
+//
+//      @UI.lineItem: [ {
+//    position: 280 , 
+//    importance: #MEDIUM, 
+//    label: 'HR_Recruitment'
+//  } ]
+//    @UI.identification: [ {
+//    position: 280 , 
+//    label: 'HR_Recruitment'
+//  } ]
+//hr_recruitment;
+//
+//      @UI.lineItem: [ {
+//    position: 280 , 
+//    importance: #MEDIUM, 
+//    label: 'IT_OVERHEAD'
+//  } ]
+//    @UI.identification: [ {
+//    position: 280 , 
+//    label: 'IT_OVERHEAD'
+//  } ]
+//it_overhead;
+//
+//      @UI.lineItem: [ {
+//    position: 290 , 
+//    importance: #MEDIUM, 
+//    label: 'Charity'
+//  } ]
+//    @UI.identification: [ {
+//    position: 290 , 
+//    label: 'Charity'
+//  } ]
+//charity;
+//
+//      @UI.lineItem: [ {
+//    position: 300 , 
+//    importance: #MEDIUM, 
+//    label: 'Cash_Payment'
+//  } ]
+//    @UI.identification: [ {
+//    position: 300 , 
+//    label: 'Cash_Payment'
+//  } ]
+//cash_payment;
+//
+//      @UI.lineItem: [ {
+//    position: 310 , 
+//    importance: #MEDIUM, 
+//    label: 'Cash_Receipts'
+//  } ]
+//    @UI.identification: [ {
+//    position: 310 , 
+//    label: 'Cash_Receipts'
+//  } ]
+//cash_receipts;
+//
+//      @UI.lineItem: [ {
+//    position: 310 , 
+//    importance: #MEDIUM, 
+//    label: 'Cash_Balance'
+//  } ]
+//    @UI.identification: [ {
+//    position: 310 , 
+//    label: 'Cash_Balance'
+//  } ]
+//cash_balance;
+
+}

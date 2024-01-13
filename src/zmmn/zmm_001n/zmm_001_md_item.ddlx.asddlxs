@@ -1,0 +1,40 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName: 'Item',
+                typeNamePlural: 'Item' } }
+annotate view ZMM_001_PV_ITEM with
+{
+  @UI.facet: [ { id:            'Item',
+               purpose:       #STANDARD,
+               type:          #IDENTIFICATION_REFERENCE,
+               label:         'Item',
+               position:      10 }  ]
+  @UI.hidden: true
+  ItemUuid;
+  @UI.hidden: true
+  HeaderUuid;
+  @UI: { lineItem: [{ position: 10,label: 'MATERIAL GROUP', importance: #HIGH }],
+  identification: [{ position: 10, label: 'MATERIAL GROUP' }]
+  }
+  Matgr;
+  @UI: { lineItem: [{ position: 20,label: 'ITEM TEXT', importance: #HIGH }],
+  identification: [{ position: 20, label: 'ITEM TEXT' }]
+  }
+  Poritex;
+  @UI: { lineItem: [{ position: 30,label: 'PLANT', importance: #HIGH }],
+  identification: [{ position: 30, label: 'PLANT' }]
+  }
+  Plant;
+  @UI: { lineItem: [{ position: 40,label: 'PRICE', importance: #HIGH }],
+  identification: [{ position: 40, label: 'PRICE' }]
+  }
+  Netpr;
+  @UI: { lineItem: [{ position: 50,label: 'CURRENCY', hidden: true }],
+  identification: [{ position: 50, label: 'CURRENCY', hidden: true }]
+  }
+  Currcode;
+  @UI: { lineItem: [{ position: 60,label: 'PROJECT ID', importance: #HIGH }],
+  identification: [{ position: 60, label: 'PROJECT ID' }]
+  }
+  Wbsel;
+
+}

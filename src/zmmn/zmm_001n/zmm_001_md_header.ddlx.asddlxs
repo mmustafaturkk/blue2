@@ -1,0 +1,53 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName: 'Header',
+                typeNamePlural: 'Headers' } }
+annotate view ZMM_001_PV_HEADER with
+{
+  @UI.facet: [ { id:              'Header',
+          purpose:         #STANDARD,
+          type:            #IDENTIFICATION_REFERENCE,
+          label:           'Header',
+          position:        10 },
+        { id:              'Item',
+          purpose:         #STANDARD,
+          type:            #LINEITEM_REFERENCE,
+          label:           'Item',
+          position:        20,
+          targetElement:   '_Item'} ]
+  HeaderUuid;
+  @UI: { lineItem: [{ position: 10, label: 'COMPANY CODE' }],
+  identification: [{ position: 10, label: 'COMPANY CODE' }],
+  selectionField: [{ position: 10 }] }
+  Comcode;
+  @UI: { lineItem: [{ position: 20, label: 'SUPPLIER' }],
+  identification: [{ position: 20, label: 'SUPPLIER' }],
+  selectionField: [{ position: 20 }] }
+  Supplier;
+  @UI: { lineItem: [{ position: 30, label: 'EXPENSE DATE' }],
+  identification: [{ position: 30, label: 'EXPENSE DATE' }],
+  selectionField: [{ position: 30 }] }
+  Pordate;
+  @UI: { lineItem: [{ position: 40, label: 'CURRENCY' },
+                             { type: #FOR_ACTION,
+                               dataAction: 'pur' ,
+                               label: 'Create Purchase Order'},
+                             { type: #FOR_ACTION,
+                               dataAction: 'inv' ,
+                               label: 'Create Invoice'},
+                             { type: #FOR_ACTION,
+                               dataAction: 'int' ,
+                               label: 'Intercompany'},
+                             { type: #FOR_ACTION,
+                               dataAction: 'atc' ,
+                               label: 'Add Attachment'}],
+  identification: [{ position: 40, label: 'CURRENCY' }],
+  selectionField: [{ position: 40 }] }
+  Doccur;
+  @UI: { lineItem: [{ position: 50, label: 'DOCUMENT NO' }]}
+  Docno;
+  @UI: { lineItem: [{ position: 60, label: 'CREATED BY' }] }
+  Createdby;
+  @UI: { lineItem: [{ position: 70, label: 'CREATION DATE' }] }
+  Createdat;
+
+}

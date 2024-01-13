@@ -1,0 +1,5 @@
+@EndUserText.label: 'Expense App Service Definition'
+define service ZMM_001_SD_EXPENSE {
+  expose ZMM_001_PV_HEADER as Header;
+  expose ZMM_001_PV_ITEM   as Item;
+}

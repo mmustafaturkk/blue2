@@ -1,0 +1,130 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName: 'Header',
+                typeNamePlural: 'Headers' } }
+annotate view ZFI_001_PV_HEAD with
+{
+  @UI.facet: [ { id:              'Header',
+        purpose:         #STANDARD,
+        type:            #IDENTIFICATION_REFERENCE,
+        label:           'Header',
+        position:        10 },
+      { id:              'Item',
+        purpose:         #STANDARD,
+        type:            #LINEITEM_REFERENCE,
+        label:           'Item',
+        position:        20,
+        targetElement:   '_Item'} ]
+  HeaderUuid;
+  @UI: { lineItem: [{ position: 10, label: 'REFERENCE DOCUMENT TYPE',hidden: true }],
+  identification: [{ position: 10, label: 'REFERENCE DOCUMENT TYPE',hidden: true }],
+  selectionField: [{ position: 10 }] }
+  refdoc;
+  @UI: { lineItem: [{ position: 20, label: 'BUSINESS TRANSACTION TYPE',hidden: true }],
+  identification: [{ position: 20, label: 'BUSINESS TRANSACTION TYPE',hidden: true }],
+  selectionField: [{ position: 20 }] }
+  bustratype;
+  @UI: { lineItem: [{ position: 30, label: 'ACCOUNTING DOCUMENT TYPE',hidden: true }],
+  identification: [{ position: 30, label: 'ACCOUNTING DOCUMENT TYPE',hidden: true }],
+  selectionField: [{ position: 30 }] }
+  accdoctype;
+  @UI: { lineItem: [{ position: 40, label: 'DOCUMENT NO' }],
+  identification: [{ position: 40, label: 'DOCUMENT NO',hidden: true }],
+  selectionField: [{ position: 40 }] }
+  docno;
+  @UI: { lineItem: [{ position: 50, label: 'COMPANY CODE' }],
+  identification: [{ position: 50, label: 'COMPANY CODE' }],
+  selectionField: [{ position: 50,exclude: true }] }
+  Comcode;
+  @UI: { lineItem: [{ position: 60, label: 'DOCUMENT DATE' }],
+  identification: [{ position: 60, label: 'DOCUMENT DATE' }],
+  selectionField: [{ position: 60,exclude: true }] }
+  Docdate;
+  @UI: { lineItem: [{ position: 70, label: 'POSTING DATE' },
+                             { type: #FOR_ACTION,
+                               dataAction: 'jount' ,
+                               label: 'Create Journal Entry'}],
+  identification: [{ position: 70, label: 'POSTING DATE' }],
+  selectionField: [{ position: 70,exclude: true }] }
+  Pastdate;
+  @UI: { lineItem: [{ position: 80, label: 'TAX DETERMINATION DATE' }],
+  identification: [{ position: 80, label: 'TAX DETERMINATION DATE' }],
+  selectionField: [{ position: 80,exclude: true }] }
+  Taxdetdate;
+  @UI: { lineItem: [{ position: 90, label: 'TRAVEL EXPENSE CLAIM' }],
+  identification: [{ position: 90, label: 'TRAVEL EXPENSE CLAIM' }],
+  selectionField: [{ position: 90,exclude: true }] }
+  traexpclaim;
+  @UI: { lineItem: [{ position: 100, label: 'TRAVEL ORDER' }],
+  identification: [{ position: 100, label: 'TRAVEL ORDER' }],
+  selectionField: [{ position: 100,exclude: true }] }
+  traorder;
+  @UI: { lineItem: [{ position: 110, label: 'PERSONEL NAME' }],
+  identification: [{ position: 110, label: 'PERSONEL NAME' }],
+  selectionField: [{ position: 110,exclude: true }] }
+  persname;
+  @UI: { lineItem: [{ position: 120, label: 'POSITION' }],
+  identification: [{ position: 120, label: 'POSITION' }],
+  selectionField: [{ position: 120,exclude: true }] }
+  positionn;
+  @UI: { lineItem: [{ position: 130, label: 'ON BUSINESS TRIP FOR' }],
+  identification: [{ position: 130, label: 'ON BUSINESS TRIP FOR' }],
+  selectionField: [{ position: 130,exclude: true }] }
+  onbustripfor;
+  @UI: { lineItem: [{ position: 140, label: 'PURPOSE OF THE TRAVEL 1' }],
+  identification: [{ position: 140, label: 'PURPOSE OF THE TRAVEL 1' }],
+  selectionField: [{ position: 140,exclude: true }] }
+  purtravel1;
+  @UI: { lineItem: [{ position: 150, label: 'PURPOSE OF THE TRAVEL 2' }],
+  identification: [{ position: 150, label: 'PURPOSE OF THE TRAVEL 2' }],
+  selectionField: [{ position: 150,exclude: true }] }
+  purtravel2;
+  @UI: { lineItem: [{ position: 160, label: 'PURPOSE OF THE TRAVEL 3' }],
+  identification: [{ position: 160, label: 'PURPOSE OF THE TRAVEL 3' }],
+  selectionField: [{ position: 160,exclude: true }] }
+  purtravel3;
+  @UI: { lineItem: [{ position: 170, label: 'PURPOSE OF THE TRAVEL 4' }],
+  identification: [{ position: 170, label: 'PURPOSE OF THE TRAVEL 4' }],
+  selectionField: [{ position: 170,exclude: true }] }
+  purtravel4;
+  @UI: { lineItem: [{ position: 180, label: 'COUNTRY 1' }],
+  identification: [{ position: 180, label: 'COUNTRY 1' }],
+  selectionField: [{ position: 180,exclude: true }] }
+  country1;
+  @UI: { lineItem: [{ position: 190, label: 'COUNTRY 2' }],
+  identification: [{ position: 190, label: 'COUNTRY 2' }],
+  selectionField: [{ position: 190,exclude: true }] }
+  country2;
+  @UI: { lineItem: [{ position: 200, label: 'COUNTRY 3' }],
+  identification: [{ position: 200, label: 'COUNTRY 3' }],
+  selectionField: [{ position: 200,exclude: true }] }
+  country3;
+  @UI: { lineItem: [{ position: 210, label: 'COUNTRY 4' }],
+  identification: [{ position: 210, label: 'COUNTRY 4' }],
+  selectionField: [{ position: 210,exclude: true }] }
+  country4;
+  @UI: { lineItem: [{ position: 220, label: 'TIME OF DEPARTURE' }],
+  identification: [{ position: 220, label: 'TIME OF DEPARTURE' }],
+  selectionField: [{ position: 220,exclude: true }] }
+  tradeparture;
+  @UI: { lineItem: [{ position: 230, label: 'ARRIVAL DATE' }],
+  identification: [{ position: 230, label: 'ARRIVAL DATE' }],
+  selectionField: [{ position: 230,exclude: true }] }
+  traarrival;
+  @UI: { lineItem: [{ position: 240, label: 'IDENTIFIED BY' }],
+  identification: [{ position: 240, label: 'IDENTIFIED BY' }],
+  selectionField: [{ position: 240,exclude: true }] }
+  identifiedby;
+  @UI: { lineItem: [{ position: 250, label: 'SIGATURE DATE' }],
+  identification: [{ position: 250, label: 'SIGATURE DATE' }],
+  selectionField: [{ position: 250,exclude: true }] }
+  signaturedate;
+  @UI: { lineItem: [{ position: 260, label: 'CREATED BY' }],
+  identification: [{ position: 260, label: 'CREATED BY',hidden: true }],
+  selectionField: [{ position: 260,exclude: true }] }
+  Createdby;
+  @UI: { lineItem: [{ position: 270, label: 'CREATION DATE' }],
+  identification: [{ position: 270, label: 'CREATION DATE',hidden: true }],
+  selectionField: [{ position: 270,exclude: true }] }
+  Createdat;
+
+}

@@ -1,0 +1,83 @@
+managed implementation in class ZBP_R_FI_002_T_CSHFL2 unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_FI_002_T_CSHFL2
+persistent table zfi_002_t_cshfl2
+draft table ZFI_002_T_CSHFLD
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Fyear,
+   Fperiod;
+
+  field ( readonly )
+   LocalCreatedAt,
+   LocalCreatedBy,
+   LastChangedAt,
+   LocalLastChangedAt,
+   LocalLastChangedBy;
+
+  field ( readonly : update )
+   Fyear,
+   Fperiod;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZFI_002_T_CSHFL2
+  {
+    Fyear = fyear;
+    Fperiod = fperiod;
+    Compcode = compcode;
+//    Proincome = proincome;
+//    Procost = procost;
+//    Proftax = proftax;
+//    Vatpay = vatpay;
+//    Vatrefund = vatrefund;
+    Currency = currency;
+    LocalCreatedBy = local_created_by;
+    LocalCreatedAt = local_created_at;
+    LocalLastChangedBy = local_last_changed_by;
+    LocalLastChangedAt = local_last_changed_at;
+    LastChangedAt = last_changed_at;
+
+//Consultancy = Consultancy;
+//EPC = EPC ;
+//Intercompany = Intercompany;
+//Indirect_Income = Indirect_Income;
+//Unbilled_Revenue = Unbilled_Revenue;
+//Others_income = Others_income;
+//Payroll = Payroll;
+//Freelancers = Freelancers;
+//Manpower_supply = Manpower_supply;
+//Subcontracted_Services = Subcontracted_Services;
+//Travel_Accomodation = Travel_Accomodation;
+//Daily_Allowance = Daily_Allowance;
+//Project_Other_Expenses = Project_Other_Expenses;
+//Intercompany_Cross = Intercompany_Cross;
+//IT_COGS = IT_COGS;
+//Billable_Insurance = Billable_Insurance;
+//Others_COGS = Others_COGS;
+//Administration = Administration;
+//Finance = Finance;
+//HR_Recruitment = HR_Recruitment ;
+//IT_OVERHEAD = IT_OVERHEAD;
+//Charity = Charity;
+//Cash_Payment = Cash_Payment;
+//Cash_Receipts = Cash_Receipts;
+//Cash_Balance = Cash_Balance;
+
+  }
+}

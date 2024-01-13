@@ -1,0 +1,7 @@
+ implementation abstract;
+ define behavior for ZA_PURCHASEORDERITEMB740F222D9
+  {
+  create;
+ update;
+ delete;
+ }

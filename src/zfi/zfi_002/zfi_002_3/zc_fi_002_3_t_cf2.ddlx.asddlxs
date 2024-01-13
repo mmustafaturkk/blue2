@@ -1,0 +1,425 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'ZC_FI_002_3_T_CF2', 
+    typeNamePlural: 'ZC_FI_002_3_T_CF2'
+  }
+}
+annotate view ZC_FI_002_3_T_CF2 with
+{
+  @UI.facet: [ {
+    id: 'idIdentification', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'ZC_FI_002_3_T_CF2', 
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #MEDIUM, 
+    label: 'Fyear'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Fyear'
+  } ]
+  Fyear;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #MEDIUM, 
+    label: 'Fperiod'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Fperiod'
+  } ]
+  Fperiod;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #MEDIUM, 
+    label: 'Compcode'
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Compcode'
+  } ]
+  Compcode;
+  
+  @UI.lineItem: [ {
+    position: 40 , 
+    importance: #MEDIUM, 
+    label: 'Currency'
+  } ]
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Currency'
+  } ]
+  Currency;
+  
+  @UI.lineItem: [ {
+    position: 50 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 50 , 
+    label: ''
+  } ]
+  Consultancy;
+  
+  @UI.lineItem: [ {
+    position: 60 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 60 , 
+    label: ''
+  } ]
+  Epc;
+  
+  @UI.lineItem: [ {
+    position: 70 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 70 , 
+    label: ''
+  } ]
+  Intercompany;
+  
+  @UI.lineItem: [ {
+    position: 80 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 80 , 
+    label: ''
+  } ]
+  IndirectIncome;
+  
+  @UI.lineItem: [ {
+    position: 90 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 90 , 
+    label: ''
+  } ]
+  UnbilledRevenue;
+  
+  @UI.lineItem: [ {
+    position: 100 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 100 , 
+    label: ''
+  } ]
+  OthersIncome;
+  
+  @UI.lineItem: [ {
+    position: 110 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 110 , 
+    label: ''
+  } ]
+  Payroll;
+  
+  @UI.lineItem: [ {
+    position: 120 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 120 , 
+    label: ''
+  } ]
+  Freelancers;
+  
+  @UI.lineItem: [ {
+    position: 130 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 130 , 
+    label: ''
+  } ]
+  ManpowerSupply;
+  
+  @UI.lineItem: [ {
+    position: 140 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 140 , 
+    label: ''
+  } ]
+  SubcontractedServices;
+  
+  @UI.lineItem: [ {
+    position: 150 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 150 , 
+    label: ''
+  } ]
+  TravelAccomodation;
+  
+  @UI.lineItem: [ {
+    position: 160 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 160 , 
+    label: ''
+  } ]
+  DailyAllowance;
+  
+  @UI.lineItem: [ {
+    position: 170 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 170 , 
+    label: ''
+  } ]
+  ProjectOtherExpenses;
+  
+  @UI.lineItem: [ {
+    position: 180 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 180 , 
+    label: ''
+  } ]
+  IntercompanyCross;
+  
+  @UI.lineItem: [ {
+    position: 190 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 190 , 
+    label: ''
+  } ]
+  ItCogs;
+  
+  @UI.lineItem: [ {
+    position: 200 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 200 , 
+    label: ''
+  } ]
+  BillableInsurance;
+  
+  @UI.lineItem: [ {
+    position: 210 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 210 , 
+    label: ''
+  } ]
+  OthersCogs;
+  
+  @UI.lineItem: [ {
+    position: 220 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 220 , 
+    label: ''
+  } ]
+  Administration;
+  
+  @UI.lineItem: [ {
+    position: 230 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 230 , 
+    label: ''
+  } ]
+  Finance;
+  
+  @UI.lineItem: [ {
+    position: 240 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 240 , 
+    label: ''
+  } ]
+  HrRecruitment;
+  
+  @UI.lineItem: [ {
+    position: 250 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 250 , 
+    label: ''
+  } ]
+  ItOverhead;
+  
+  @UI.lineItem: [ {
+    position: 260 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 260 , 
+    label: ''
+  } ]
+  Charity;
+  
+  @UI.lineItem: [ {
+    position: 270 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 270 , 
+    label: ''
+  } ]
+  CashPayment;
+  
+  @UI.lineItem: [ {
+    position: 280 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 280 , 
+    label: ''
+  } ]
+  CashReceipts;
+  
+  @UI.lineItem: [ {
+    position: 290 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 290 , 
+    label: ''
+  } ]
+  CashBalance;
+  
+      @UI.lineItem: [ {
+    position: 300 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 300 , 
+    label: ''
+  } ]
+  VAT_refund;
+
+      @UI.lineItem: [ {
+    position: 310 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 310 , 
+    label: ''
+  } ]
+  loans_received_from_banks;
+
+      @UI.lineItem: [ {
+    position: 320 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 320 , 
+    label: ''
+  } ]
+  Other_Cash_Receipt;
+
+      @UI.lineItem: [ {
+    position: 330 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 330 , 
+    label: ''
+  } ]
+  Business_Dev_Marketing;
+
+      @UI.lineItem: [ {
+    position: 340 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 340 , 
+    label: ''
+  } ]
+  VAT_payment;
+
+      @UI.lineItem: [ {
+    position: 350 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 350 , 
+    label: ''
+  } ]
+  loans_repaid_banks;
+
+      @UI.lineItem: [ {
+    position: 360 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 360 , 
+    label: ''
+  } ]
+  profit_tax;
+  
+        @UI.lineItem: [ {
+    position: 370 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 370 , 
+    label: ''
+  } ]
+  others_payments;
+
+  @UI.hidden: true
+  Locallastchangedat;
+}

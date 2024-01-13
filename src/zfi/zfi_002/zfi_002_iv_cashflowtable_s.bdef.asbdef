@@ -1,0 +1,95 @@
+managed with additional save implementation in class ZBP_I_CASHFLOWTABLE_S unique;
+strict;
+with draft;
+
+define behavior for ZFI_002_IV_CashFlowTable_S alias CashFlowTableAll
+draft table ZFI_002_T_CFD_S
+with unmanaged save
+lock master total etag LastChangedAtMax
+authorization master( global )
+
+{
+  field ( readonly )
+   SingletonID;
+
+
+  update;
+  internal create;
+  internal delete;
+
+  draft action ( features : instance ) Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  action ( features : instance ) SelectCustomizingTransptReq parameter D_SelectCustomizingTransptReqP result [1] $self;
+
+  association _CashFlowTable { create ( features : instance ); with draft; }
+}
+
+define behavior for ZFI_002_IV_CashFlowTable alias CashFlowTable
+persistent table ZFI_002_T_CSHFL2
+draft table ZFI_002_T_CF_DRA
+lock dependent by _CashFlowTableAll
+authorization dependent by _CashFlowTableAll
+
+{
+  field ( mandatory : create )
+   Fyear,
+   Fperiod;
+
+  field ( readonly )
+   SingletonID;
+
+  field ( readonly : update )
+   Fyear,
+   Fperiod;
+
+
+  update( features : global );
+  delete( features : global );
+
+  mapping for ZFI_002_T_CSHFL2
+  {
+    Fyear = FYEAR;
+    Fperiod = FPERIOD;
+    Compcode = COMPCODE;
+//    Proincome = PROINCOME;
+//    Procost = PROCOST;
+//    Proftax = PROFTAX;
+//    Vatpay = VATPAY;
+//    Vatrefund = VATREFUND;
+    Currency = CURRENCY;
+
+
+//Consultancy = Consultancy;
+//EPC = EPC ;
+//Intercompany = Intercompany;
+//Indirect_Income = Indirect_Income;
+//Unbilled_Revenue = Unbilled_Revenue;
+//Others_income = Others_income;
+//Payroll = Payroll;
+//Freelancers = Freelancers;
+//Manpower_supply = Manpower_supply;
+//Subcontracted_Services = Subcontracted_Services;
+//Travel_Accomodation = Travel_Accomodation;
+//Daily_Allowance = Daily_Allowance;
+//Project_Other_Expenses = Project_Other_Expenses;
+//Intercompany_Cross = Intercompany_Cross;
+//IT_COGS = IT_COGS;
+//Billable_Insurance = Billable_Insurance;
+//Others_COGS = Others_COGS;
+//Administration = Administration;
+//Finance = Finance;
+//HR_Recruitment = HR_Recruitment ;
+//IT_OVERHEAD = IT_OVERHEAD;
+//Charity = Charity;
+//Cash_Payment = Cash_Payment;
+//Cash_Receipts = Cash_Receipts;
+//Cash_Balance = Cash_Balance;
+  }
+
+  association _CashFlowTableAll { with draft; }
+
+  validation ValidateTransportRequest on save ##NOT_ASSIGNED_TO_DETACT { create; update; delete; }
+}

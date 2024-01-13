@@ -1,0 +1,78 @@
+managed implementation in class zbp_fi_001_alw_header2 unique;
+strict ( 1 );
+with draft;
+
+define behavior for ZFI_001_ALW_HEADER2 //alias <alias_name>
+persistent table zfi_001_alw_h2
+draft table zfi_001_alw_h2d
+lock master
+total etag Locallastchangedat
+authorization master ( global )
+//authorization master ( instance )
+etag master Lastchangedat
+{
+  create;
+  update;
+  delete;
+  action jount;
+  action att;
+  field ( numbering : managed, readonly ) Id;
+  association _Item { create;with draft; }
+  draft action Edit;
+  draft action Activate;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+  mapping for zfi_001_alw_h2
+    {
+      id                 = id;
+      Accdoctype         = accdoctype;
+      Attachment         = attachment;
+      Bustratype         = bustratype;
+      Comcode            = comcode;
+      Docdate            = docdate;
+      Docno              = docno;
+      Filename           = filename;
+      Lastchangedat      = lastchangedat;
+      Locallastchangedat = locallastchangedat;
+      Mimetype           = mimetype;
+      Pastdate           = pastdate;
+      Refdoc             = refdoc;
+      Taxdetdate         = taxdetdate;
+    }
+}
+
+define behavior for ZFI_001_ALW_ITEM2 //alias <alias_name>
+persistent table zfi_001_alw_i2
+draft table zfi_001_alw_i2d
+lock dependent by _Header
+authorization dependent by _Header
+etag master LastChangedat
+{
+  update;
+  delete;
+  field ( readonly ) Id;
+  association _Header {with draft;}
+  mapping for zfi_001_alw_i2
+    {
+      Id           = id;
+      AttachId     = attach_id;
+      Amnintracur  = amnintracur;
+      Contype      = contype;
+      Costcenter   = costcenter;
+      Currcode     = currcode;
+      Debcrecode   = debcrecode;
+      Docitemtext  = docitemtext;
+      Funcarea     = funcarea;
+      Glacc        = glacc;
+      Housebank    = housebank;
+      Housebankacc = housebankacc;
+      Profitcenter = profitcenter;
+      Refdocitem   = refdocitem;
+      Segment      = segment;
+      Taxbaseamnt  = taxbaseamnt;
+      Taxclas      = taxclas;
+      Taxcode      = taxcode;
+      Valdate      = valdate;
+    }
+}

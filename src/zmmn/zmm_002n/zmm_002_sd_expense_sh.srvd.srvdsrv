@@ -1,0 +1,10 @@
+@EndUserText.label: 'Expense Application Value Helps'
+define service Zmm_002_sd_expense_sh {
+  expose zmm_002_dd_companycode  as companycode;
+  expose zmm_002_dd_currency     as currency;
+  expose zmm_002_dd_plant        as plant;
+  expose zmm_002_dd_productgroup as productgroup;
+  expose zmm_002_dd_wbselement   as wbselement;
+  expose ZMM_002_DD_SUPPLIER     as supplier;
+  expose ZMM_002_DD_VATRATE      as vatrate;
+}

@@ -1,0 +1,25 @@
+projection;
+strict;
+use draft;
+
+define behavior for ZFI_002_PV_CashFlowTable_S alias CashFlowTableAll
+
+{
+  use action Edit;
+  use action Activate;
+  use action Discard;
+  use action Resume;
+  use action Prepare;
+  use action SelectCustomizingTransptReq;
+
+  use association _CashFlowTable { create; with draft; }
+}
+
+define behavior for ZFI_002_PV_CashFlowTable alias CashFlowTable
+
+{
+  use update;
+  use delete;
+
+  use association _CashFlowTableAll { with draft; }
+}

@@ -1,0 +1,96 @@
+managed implementation in class zbp_fi_001_alw_dd_head unique;
+strict ( 1 );
+
+define behavior for ZFI_001_ALW_DD_HEAD alias Header
+persistent table zfi_001_t_alw_h
+//draft table zfi_001_t_h_draf
+lock master
+//total etag Locallastchangedat
+authorization master ( global )
+etag master Lastchangedat
+//authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+  association _Item { create; }
+  field ( numbering : managed, readonly ) HeaderUuid;
+  //  draft action Edit;
+  //  draft action Activate;
+  //  draft action Discard;
+  //  draft action Resume;
+  //  draft determine action Prepare;
+  mapping for zfi_001_t_alw_h
+    {
+      HeaderUuid         = header_uuid;
+      Accdoctype         = accdoctype;
+      Attachment         = attachment;
+      Bustratype         = bustratype;
+      Comcode            = comcode;
+      Country1           = country1;
+      Country2           = country2;
+      Country3           = country3;
+      Country4           = country4;
+      Dob                = dob;
+      Docdate            = docdate;
+      Docno              = docno;
+      Filename           = filename;
+      Identifiedby       = identifiedby;
+      Lastchangedat      = lastchangedat;
+      Locallastchangedat = locallastchangedat;
+      Mimetype           = mimetype;
+      Onbustripfor       = onbustripfor;
+      Pastdate           = pastdate;
+      Persname           = persname;
+      Positionn          = positionn;
+      Purtravel1         = purtravel1;
+      Purtravel2         = purtravel2;
+      Purtravel3         = purtravel3;
+      Purtravel4         = purtravel4;
+      Refdoc             = refdoc;
+      Signaturedate      = signaturedate;
+      Taxdetdate         = taxdetdate;
+      Traarrival         = traarrival;
+      Tradeparture       = tradeparture;
+      Traexpclaim        = traexpclaim;
+      Traorder           = traorder;
+    }
+
+}
+
+define behavior for ZFI_001_ALW_DD_ITEM alias Item
+persistent table zfi_001_t_alw_i
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+//  create;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) ItemUuid;
+  field ( readonly ) HeaderUuid;
+  association _Header;
+  mapping for zfi_001_t_alw_i
+    {
+      HeaderUuid   = header_uuid;
+      ItemUuid     = item_uuid;
+      Amnintracur  = amnintracur;
+      Contype      = contype;
+      Costcenter   = costcenter;
+      Currcode     = currcode;
+      Debcrecode   = debcrecode;
+      Docitemtext  = docitemtext;
+      Funcarea     = funcarea;
+      Glacc        = glacc;
+      Housebank    = housebank;
+      Housebankacc = housebankacc;
+      Profitcenter = profitcenter;
+      Refdocitem   = refdocitem;
+      Segment      = segment;
+      Taxbaseamnt  = taxbaseamnt;
+      Taxclas      = taxclas;
+      Taxcode      = taxcode;
+      Valdate      = valdate;
+    }
+}

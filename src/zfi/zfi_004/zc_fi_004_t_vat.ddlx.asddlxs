@@ -1,0 +1,51 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'ZC_FI_004_T_VAT', 
+    typeNamePlural: 'ZC_FI_004_T_VATs'
+  }
+}
+annotate view ZC_FI_004_T_VAT with
+{
+  @UI.facet: [ {
+    id: 'idIdentification', 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'ZC_FI_004_T_VAT', 
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    importance: #MEDIUM, 
+    label: 'Companycode'
+  } ]
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'Companycode'
+  } ]
+  Companycode;
+  
+  @UI.lineItem: [ {
+    position: 20 , 
+    importance: #MEDIUM, 
+    label: 'Taxcode'
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'Taxcode'
+  } ]
+  Taxcode;
+  
+  @UI.lineItem: [ {
+    position: 30 , 
+    importance: #MEDIUM, 
+    label: ''
+  } ]
+  @UI.identification: [ {
+    position: 30 , 
+    label: ''
+  } ]
+  Vatrate;
+  
+  @UI.hidden: true
+  LocalLastChangedAt;
+}

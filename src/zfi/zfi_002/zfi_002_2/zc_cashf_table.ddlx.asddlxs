@@ -1,0 +1,220 @@
+@Metadata.layer: #CUSTOMER
+@UI: {
+  headerInfo: {
+    typeName: 'CashFlowTable', 
+    typeNamePlural: 'CashFlowTables', 
+    title: {
+      type: #STANDARD, 
+      label: 'Cash Flow Table', 
+      value: 'Fyear'
+    }
+  }
+}
+annotate view ZC_CashF_Table with
+{
+  @UI.identification: [ {
+    position: 1 , 
+    label: 'Fyear'
+  } ]
+  @UI.lineItem: [ {
+    position: 1 , 
+    label: 'Fyear'
+  } ]
+  @UI.facet: [ {
+    id: 'ZI_CashF_Table', 
+    purpose: #STANDARD, 
+    type: #IDENTIFICATION_REFERENCE, 
+    label: 'Cash Flow Table', 
+    position: 1 
+  } ]
+  Fyear;
+  
+  @UI.identification: [ {
+    position: 2 , 
+    label: 'Fperiod'
+  } ]
+  @UI.lineItem: [ {
+    position: 2 , 
+    label: 'Fperiod'
+  } ]
+  Fperiod;
+  
+  @UI.identification: [ {
+    position: 3 , 
+    label: 'Compcode'
+  } ]
+  @UI.lineItem: [ {
+    position: 3 , 
+    label: 'Compcode'
+  } ]
+  Compcode;
+  
+  @Consumption.valueHelpDefinition: [ {
+    entity: {
+      name: 'I_Currency', 
+      element: 'Currency'
+    }
+  } ]
+  Currency;
+  
+  @UI.identification: [ {
+    position: 4 
+  } ]
+  @UI.lineItem: [ {
+    position: 4 
+  } ]
+  Consultancy;
+  
+  @UI.identification: [ {
+    position: 5 
+  } ]
+  @UI.lineItem: [ {
+    position: 5 
+  } ]
+  Epc;
+  
+  @UI.identification: [ {
+    position: 6 
+  } ]
+  @UI.lineItem: [ {
+    position: 6 
+  } ]
+  Intercompany;
+  
+  @UI.identification: [ {
+    position: 7 
+  } ]
+  @UI.lineItem: [ {
+    position: 7 
+  } ]
+  IndirectIncome;
+  
+  @UI.identification: [ {
+    position: 8 
+  } ]
+  @UI.lineItem: [ {
+    position: 8 
+  } ]
+  UnbilledRevenue;
+  
+  @UI.identification: [ {
+    position: 9 
+  } ]
+  @UI.lineItem: [ {
+    position: 9 
+  } ]
+  OthersIncome;
+  
+  @UI.identification: [ {
+    position: 10 
+  } ]
+  @UI.lineItem: [ {
+    position: 10 
+  } ]
+  Payroll;
+  
+  @UI.identification: [ {
+    position: 11 
+  } ]
+  Freelancers;
+  
+  @UI.identification: [ {
+    position: 12 
+  } ]
+  ManpowerSupply;
+  
+  @UI.identification: [ {
+    position: 13 
+  } ]
+  SubcontractedServices;
+  
+  @UI.identification: [ {
+    position: 14 
+  } ]
+  TravelAccomodation;
+  
+  @UI.identification: [ {
+    position: 15 
+  } ]
+  DailyAllowance;
+  
+  @UI.identification: [ {
+    position: 16 
+  } ]
+  ProjectOtherExpenses;
+  
+  @UI.identification: [ {
+    position: 17 
+  } ]
+  IntercompanyCross;
+  
+  @UI.identification: [ {
+    position: 18 
+  } ]
+  ItCogs;
+  
+  @UI.identification: [ {
+    position: 19 
+  } ]
+  BillableInsurance;
+  
+  @UI.identification: [ {
+    position: 20 
+  } ]
+  OthersCogs;
+  
+  @UI.identification: [ {
+    position: 21 
+  } ]
+  Administration;
+  
+  @UI.identification: [ {
+    position: 22 
+  } ]
+  Finance;
+  
+  @UI.identification: [ {
+    position: 23 
+  } ]
+  HrRecruitment;
+  
+  @UI.identification: [ {
+    position: 24 
+  } ]
+  ItOverhead;
+  
+  @UI.identification: [ {
+    position: 25 
+  } ]
+  Charity;
+  
+  @UI.identification: [ {
+    position: 26 
+  } ]
+  CashPayment;
+  
+  @UI.identification: [ {
+    position: 27 
+  } ]
+  CashReceipts;
+  
+  @UI.identification: [ {
+    position: 28 
+  } ]
+  CashBalance;
+  
+  @UI.identification: [ {
+    position: 29 
+  } ]
+  Localcreatedby;
+  
+  @UI.identification: [ {
+    position: 30 
+  } ]
+  Localcreatedat;
+  
+  @UI.identification: [ {
+    position: 31 
+  } ]
+  Lastchangedat;
+}

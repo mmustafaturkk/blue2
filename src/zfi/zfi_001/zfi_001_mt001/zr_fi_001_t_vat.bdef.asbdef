@@ -1,0 +1,45 @@
+managed implementation in class ZBP_R_FI_001_T_VAT unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_FI_001_T_VAT alias VAT
+persistent table zfi_001_t_vat
+draft table ZFI_001_T_VAT_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Rate;
+
+  field ( readonly )
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Rate;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZFI_001_T_VAT
+  {
+    Rate = rate;
+    A0 = a0;
+    A1 = a1;
+    A2 = a2;
+    A3 = a3;
+    A4 = a4;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

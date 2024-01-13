@@ -1,0 +1,80 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: { typeName: 'Item',
+                typeNamePlural: 'Item' } }
+annotate view ZFI_001_ALW_PV_ITEM with
+{
+  @UI.facet: [ { id:            'Item',
+           purpose:       #STANDARD,
+           type:          #IDENTIFICATION_REFERENCE,
+           label:         'Item',
+           position:      10 }  ]
+  @UI: { lineItem: [{ position: 10,label: 'REFERENCE DOCUMENT ITEM', importance: #HIGH,hidden: true }],
+  identification: [{ position: 10, label: 'REFERENCE DOCUMENT ITEM',hidden: true }]
+  }
+  Refdocitem;
+  @UI: { lineItem: [{ position: 20,label: 'GL ACCOUNT', importance: #HIGH,hidden: true }],
+  identification: [{ position: 20, label: 'GL ACCOUNT',hidden: true }]
+  }
+  Glacc;
+  @UI: { lineItem: [{ position: 30,label: 'AMOUNT IN TRANSACTION CURRENCY', importance: #HIGH,hidden: true }],
+  identification: [{ position: 30, label: 'AMOUNT IN TRANSACTION CURRENCY',hidden: true }]
+  }
+  Amnintracur;
+  @UI: { lineItem: [{ position: 40,label: 'CURRENCY CODE', importance: #HIGH,hidden: true }],
+  identification: [{ position: 40, label: 'CURRENCY CODE',hidden: true }]
+  }
+  Currcode;
+  @UI: { lineItem: [{ position: 50,label: 'DEBIT CREDIT CODE', importance: #HIGH,hidden: true }],
+  identification: [{ position: 50, label: 'DEBIT CREDIT CODE',hidden: true }]
+  }
+  Debcrecode;
+  @UI: { lineItem: [{ position: 60,label: 'DOCUMENT ITEM TEXT', importance: #HIGH,hidden: true }],
+  identification: [{ position: 60, label: 'DOCUMENT ITEM TEXT',hidden: true }]
+  }
+  Docitemtext;
+  @UI: { lineItem: [{ position: 70,label: 'TAX CODE', importance: #HIGH,hidden: true }],
+  identification: [{ position: 70, label: 'TAX CODE',hidden: true }]
+  }
+  Taxcode;
+  @UI: { lineItem: [{ position: 80,label: 'COST CENTER', importance: #HIGH,hidden: true }],
+  identification: [{ position: 80, label: 'COST CENTER',hidden: true }]
+  }
+  Costcenter;
+  @UI: { lineItem: [{ position: 90,label: 'PROFIT CENTER', importance: #HIGH,hidden: true }],
+  identification: [{ position: 90, label: 'PROFIT CENTER',hidden: true }]
+  }
+  Profitcenter;
+  @UI: { lineItem: [{ position: 100,label: 'SEGMENT', importance: #HIGH,hidden: true }],
+  identification: [{ position: 100, label: 'SEGMENT',hidden: true }]
+  }
+  Segment;
+  @UI: { lineItem: [{ position: 110,label: 'FUNCTIONAL AREA', importance: #HIGH,hidden: true }],
+  identification: [{ position: 110, label: 'FUNCTIONAL AREA',hidden: true }]
+  }
+  Funcarea;
+  @UI: { lineItem: [{ position: 120,label: 'VALUE DATE', importance: #HIGH,hidden: true }],
+  identification: [{ position: 120, label: 'VALUE DATE',hidden: true }]
+  }
+  Valdate;
+  @UI: { lineItem: [{ position: 130,label: 'HOUSE BANK', importance: #HIGH,hidden: true }],
+  identification: [{ position: 130, label: 'HOUSE BANK',hidden: true }]
+  }
+  Housebank;
+  @UI: { lineItem: [{ position: 140,label: 'HOUSE BANK ACCOUNT', importance: #HIGH,hidden: true }],
+  identification: [{ position: 140, label: 'HOUSE BANK ACCOUNT',hidden: true }]
+  }
+  Housebankacc;
+  @UI: { lineItem: [{ position: 150,label: 'TAX CLASSIFICATION', importance: #HIGH,hidden: true }],
+  identification: [{ position: 150, label: 'TAX CLASSIFICATION',hidden: true }]
+  }
+  Taxclas;
+  @UI: { lineItem: [{ position: 160,label: 'CONDITION TYPE', importance: #HIGH,hidden: true }],
+  identification: [{ position: 160, label: 'CONDITION TYPE',hidden: true }]
+  }
+  Contype;
+  @UI: { lineItem: [{ position: 170,label: 'TAX BASE AMOUNT', importance: #HIGH,hidden: true }],
+  identification: [{ position: 170, label: 'TAX BASE AMOUNT',hidden: true }]
+  }
+  Taxbaseamnt;
+
+}

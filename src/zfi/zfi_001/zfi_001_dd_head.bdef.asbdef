@@ -1,0 +1,30 @@
+unmanaged implementation in class zbp_fi_001_dd_header unique;
+strict ( 2 );
+
+define behavior for ZFI_001_DD_HEAD alias Header
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create;
+  update;
+  delete;
+//  action (features:instance) jount;
+  action jount;
+
+  association _Item { create; }
+
+}
+
+define behavior for ZFI_001_DD_ITEM alias Item
+//late numbering
+lock dependent by _Header
+authorization dependent by _Header
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) HeaderUuid;
+  association _Header;
+}

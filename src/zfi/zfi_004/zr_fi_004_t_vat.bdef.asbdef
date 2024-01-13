@@ -1,0 +1,44 @@
+managed implementation in class ZBP_R_FI_004_T_VAT unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZR_FI_004_T_VAT
+persistent table zfi_004_t_vat
+draft table ZFI_004_T_VAT_D
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+
+{
+  field ( mandatory : create )
+   Companycode,
+   Taxcode;
+
+  field ( readonly )
+   LastChangedAt,
+   LocalLastChangedAt;
+
+  field ( readonly : update )
+   Companycode,
+   Taxcode;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZFI_004_T_VAT
+  {
+    Companycode = companycode;
+    Taxcode = taxcode;
+    Vatrate = vatrate;
+    LastChangedAt = last_changed_at;
+    LocalLastChangedAt = local_last_changed_at;
+  }
+}

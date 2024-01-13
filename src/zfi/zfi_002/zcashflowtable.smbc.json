@@ -1,0 +1,34 @@
+{
+  "formatVersion": "1",
+  "header": {
+    "description": "Maintain Cash Flow Table",
+    "originalLanguage": "en",
+    "abapLanguageVersion": "cloudDevelopment"
+  },
+  "serviceConfiguration": {
+    "serviceBinding": "ZFI_002_SB_CSHFLOWTABLE_O4",
+    "serviceName": "ZFI_002_SB_CSHFLOWTABLE_O4",
+    "serviceVersion": "0001",
+    "rootEntitySet": "CashFlowTableAll",
+    "name": "Cash Flow Table",
+    "configurationGroup": "",
+    "skipRootEntity": true
+  },
+  "appConfiguration": {
+    "listReport": {},
+    "objectPages": [
+      {
+        "entitySet": "CashFlowTableAll",
+        "variantManagement": "control"
+      }
+    ],
+    "tableSettings": [
+      {
+        "entitySet": "CashFlowTable",
+        "tableType": "gridTable",
+        "creationModeName": "creationRow",
+        "rowCountMode": "auto"
+      }
+    ]
+  }
+}
