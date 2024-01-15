@@ -111,7 +111,7 @@ CLASS zmm_001_cl_expense DEFINITION
         EXPORTING
           ev_po_number TYPE ty_header-purchaseorder
         CHANGING
-          ct_return         LIKE lt_return,
+          ct_return    LIKE lt_return,
 
       create_property_po,
 
@@ -179,13 +179,10 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
 *        DATA: lv_total TYPE zmm_001_de_total.
         DATA: lv_total TYPE za_supplierinvoice-invoicegrossamount.
 
-        LOOP AT gs_input-items INTO DATA(ls_itemtotal).
-          lv_total = ls_itemtotal-netpr + lv_total.
-        ENDLOOP.
+*        LOOP AT gs_input-items INTO DATA(ls_itemtotal).
+*          lv_total = ls_itemtotal-netpr + lv_total.
+*        ENDLOOP.
 
-        IF gs_input-doccur = 'HUF'.
-          lv_total = lv_total * 10.
-        ENDIF.
 
 
 
@@ -245,24 +242,7 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
                   ).
 
 
-*        ENDIF.
-*        IF gs_input-type = 'INV'.
-*          me->create_property_inv( ).
-*        ELSEIF gs_input-type = 'INT'.
-        me->create_property_int( ).
-*        ENDIF.
 
-        " Navigate to the resource and create a request for the create operation
-        lo_request = lo_client_proxy->create_resource_for_entity_set( 'A_SUPPLIERINVOICE' )->create_request_for_create( ).
-
-        DATA(lo_data_description_node) = lo_request->create_data_descripton_node( ).
-        lo_data_description_node->set_properties( gt_header_pro  ).
-*        IF gs_input-type = 'INV'.
-*          DATA(lo_item_child) = lo_data_description_node->add_child( '_SUPLRINVCITEMPURORDREF' ).
-*        ELSEIF gs_input-type = 'INT'.
-        DATA(lo_item_child) = lo_data_description_node->add_child( '_SUPPLIERINVOICEITEMGLACCT' ).
-*        ENDIF.
-        lo_item_child->set_properties( gt_item_pro ).
 
         LOOP AT gs_input-items INTO DATA(ls_items) GROUP BY ls_items-itemcur.
 
@@ -314,7 +294,7 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
             <lfs_item2>-wbselement = ls_item-wbsel .
 *            <lfs_item2>-documentcurrency = gs_input-doccur .
             <lfs_item2>-documentcurrency = ls_item-itemcur .
-            IF gs_input-doccur EQ 'HUF'.
+            IF ls_item-itemcur EQ 'HUF'.
               ls_item-netpr = ls_item-netpr * 10 .
             ENDIF.
             <lfs_item2>-supplierinvoiceitemamount = ls_item-netpr .
@@ -323,6 +303,7 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
             <lfs_item2>-debitcreditcode = 'S' .
             <lfs_item2>-supplierinvoiceitemtext = ls_item-itex.
             <lfs_item2>-costcenter = ''.
+            <lfs_item2>-assignmentreference = ls_item-recipentno.
 
             lv_total = lv_total + ls_item-netpr.
           ENDLOOP.
@@ -333,6 +314,25 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
           ENDIF.
           ls_business_data2-invoicegrossamount = lv_total.
           CLEAR: lv_total.
+
+*                  endif.
+*        IF gs_input-type = 'INV'.
+*          me->create_property_inv( ).
+*        ELSEIF gs_input-type = 'INT'.
+          me->create_property_int( ).
+*        ENDIF.
+
+          " Navigate to the resource and create a request for the create operation
+          lo_request = lo_client_proxy->create_resource_for_entity_set( 'A_SUPPLIERINVOICE' )->create_request_for_create( ).
+
+          DATA(lo_data_description_node) = lo_request->create_data_descripton_node( ).
+          lo_data_description_node->set_properties( gt_header_pro  ).
+*        IF gs_input-type = 'INV'.
+*          DATA(lo_item_child) = lo_data_description_node->add_child( '_SUPLRINVCITEMPURORDREF' ).
+*        ELSEIF gs_input-type = 'INT'.
+          DATA(lo_item_child) = lo_data_description_node->add_child( '_SUPPLIERINVOICEITEMGLACCT' ).
+*        ENDIF.
+          lo_item_child->set_properties( gt_item_pro ).
 
 
           " Set the business data for the created entity
@@ -354,6 +354,7 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
           lo_request->execute( )->get_business_data( IMPORTING es_business_data = ls_business_data_return2 ).
 *        ENDIF.
           lo_request->check_execution( ).
+          FREE lo_request.
         ENDLOOP.
 
 *        LOOP AT gs_input-items INTO DATA(ls_item).
@@ -500,6 +501,7 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
     APPEND 'DEBITCREDITCODE' TO gt_item_pro.
     APPEND 'SUPPLIERINVOICEITEMTEXT' TO gt_item_pro.
     APPEND 'COSTCENTER' TO gt_item_pro.
+    APPEND 'ASSIGNMENTREFERENCE' TO gt_item_pro.
 
 
   ENDMETHOD.
@@ -570,11 +572,11 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
                   purchasingorganization          = gs_input-comcode "'BLUE'
                   purchasinggroup                 = 'CGS'
                   purchaseorderdate               = lv_pur_ord_date
-                  documentcurrency                = gs_input-doccur
+*                  documentcurrency                = gs_input-doccur
 
 
-*                  creationdate                    = gs_input-createdat
-*                  lastchangedatetime              = gs_input-createdat
+*                  creationdate                    = lv_pur_ord_date "gs_input-createdat
+*                  lastchangedatetime              = lv_pur_ord_date "gs_input-createdat
 *                  cashdiscount1days               = '0'
 *                  cashdiscount2days               = '0'
 *                  netpaymentdays                  = '0'
@@ -592,6 +594,8 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
         INTO @DATA(lv_plant).
 
         LOOP AT gs_input-items INTO DATA(ls_item).
+          ls_business_data-documentcurrency = ls_item-itemcur.
+
           APPEND INITIAL LINE TO ls_business_data-_purchaseorderitem ASSIGNING FIELD-SYMBOL(<fs_purchase_item>).
 
           <fs_purchase_item>-purchaseorderitemtext = ls_item-itex.
@@ -607,31 +611,42 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
           <fs_purchase_item>-goodsreceiptisnonvaluated = abap_false.
           <fs_purchase_item>-invoiceisexpected = abap_true.
           <fs_purchase_item>-invoiceisgoodsreceiptbased = abap_false.
+          <fs_purchase_item>-documentcurrency = ls_item-itemcur.
 
-*          <fs_purchase_item>-orderpriceunittoorderunitnmrtr = '1'.
-*          <fs_purchase_item>-ordpriceunittoorderunitdnmntr = '1'.
-*          <fs_purchase_item>-taxdeterminationdate = lv_pur_ord_date.
-*          <fs_purchase_item>-priceistobeprinted = abap_true.
-*          <fs_purchase_item>-overdelivtolrtdlmtratioinpct = '0'.
-*          <fs_purchase_item>-unlimitedoverdeliveryisallowed = abap_true.
-*          <fs_purchase_item>-iscompletelydelivered = abap_true.
-*          <fs_purchase_item>-isfinallyinvoiced = abap_true.
-*          <fs_purchase_item>-supplierissubcontractor = abap_false.
-*          <fs_purchase_item>-itemnetweight = '0'.
-*          <fs_purchase_item>-itemvolume = '0'.
-*          <fs_purchase_item>-evaldrcptsettlmtisallowed = abap_false.
-*          <fs_purchase_item>-isreturnsitem = abap_false.
-*          <fs_purchase_item>-expectedoveralllimitamount = '0'.
-*          <fs_purchase_item>-overalllimitamount = '0'.
-*          <fs_purchase_item>-purchasingitemisfreeofcharge = abap_false.
-*          <fs_purchase_item>-downpaymentpercentageoftotamt = '0'.
-*          <fs_purchase_item>-downpaymentamount = '0'.
-*          <fs_purchase_item>-downpaymentduedate = lv_pur_ord_date.
-*          <fs_purchase_item>-br_isproducedinhouse = abap_false.
+          <fs_purchase_item>-orderpriceunittoorderunitnmrtr = '1'.
+          <fs_purchase_item>-ordpriceunittoorderunitdnmntr = '1'.
+          <fs_purchase_item>-taxdeterminationdate = lv_pur_ord_date.
+          <fs_purchase_item>-priceistobeprinted = abap_true.
+          <fs_purchase_item>-overdelivtolrtdlmtratioinpct = '0'.
+          <fs_purchase_item>-unlimitedoverdeliveryisallowed = abap_true.
+          <fs_purchase_item>-iscompletelydelivered = abap_true.
+          <fs_purchase_item>-isfinallyinvoiced = abap_true.
+          <fs_purchase_item>-supplierissubcontractor = abap_false.
+          <fs_purchase_item>-itemnetweight = '0'.
+          <fs_purchase_item>-itemvolume = '0'.
+          <fs_purchase_item>-evaldrcptsettlmtisallowed = abap_false.
+          <fs_purchase_item>-isreturnsitem = abap_false.
+          <fs_purchase_item>-expectedoveralllimitamount = '0'.
+          <fs_purchase_item>-overalllimitamount = '0'.
+          <fs_purchase_item>-purchasingitemisfreeofcharge = abap_false.
+          <fs_purchase_item>-downpaymentpercentageoftotamt = '0'.
+          <fs_purchase_item>-downpaymentamount = '0'.
+          <fs_purchase_item>-downpaymentduedate = lv_pur_ord_date.
+          <fs_purchase_item>-br_isproducedinhouse = abap_false.
 
           APPEND INITIAL LINE TO <fs_purchase_item>-_accountassignment ASSIGNING FIELD-SYMBOL(<fs_acc_asign>).
 
           <fs_acc_asign>-wbselement = ls_item-wbsel.
+
+          APPEND INITIAL LINE TO <fs_purchase_item>-_purchaseorderpricingelement ASSIGNING FIELD-SYMBOL(<fs_pricing>).
+
+          <fs_pricing>-conditiontype = 'PMP0'.
+          <fs_pricing>-conditionratevalue = ls_item-netpr .
+          <fs_pricing>-conditioncurrency = ls_item-itemcur.
+          <fs_pricing>-conditionquantity = '1'.
+          <fs_pricing>-conditiontobaseqtynmrtr = '0'.
+          <fs_pricing>-conditiontobaseqtydnmntr = '0'.
+
 
         ENDLOOP.
 
@@ -645,10 +660,10 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
         lo_item_child->set_properties( gt_header_item ).
         DATA(lo_acc_assign) = lo_item_child->add_child( '_ACCOUNTASSIGNMENT' ).
         lo_acc_assign->set_properties( gt_account_assign ).
-        DATA(lo_schedule_line) = lo_item_child->add_child( '_SCHEDULELINE' ).
-        lo_schedule_line->set_properties( gt_schedule_line ).
-        DATA(lo_sub_contract) = lo_schedule_line->add_child( '_SUBCONTRACTINGCOMPONENT' ).
-        lo_sub_contract->set_properties( gt_subcontract_comp ).
+*        DATA(lo_schedule_line) = lo_item_child->add_child( '_SCHEDULELINE' ).
+*        lo_schedule_line->set_properties( gt_schedule_line ).
+*        DATA(lo_sub_contract) = lo_schedule_line->add_child( '_SUBCONTRACTINGCOMPONENT' ).
+*        lo_sub_contract->set_properties( gt_subcontract_comp ).
         DATA(lo_pricing_element) = lo_item_child->add_child( '_PURCHASEORDERPRICINGELEMENT' ).
         lo_pricing_element->set_properties( gt_pricing_element ).
 
@@ -671,8 +686,8 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
         ) )->write_to( REF #( ls_error ) ).
 
         LOOP AT ls_error-error-innererror-errordetails INTO DATA(ls_errordetails).
-            APPEND INITIAL LINE TO ct_return ASSIGNING FIELD-SYMBOL(<lfs_return>).
-            <lfs_return>-message = ls_errordetails-message.
+          APPEND INITIAL LINE TO ct_return ASSIGNING FIELD-SYMBOL(<lfs_return>).
+          <lfs_return>-message = ls_errordetails-message.
         ENDLOOP.
         " Handle remote Exception
         " It contains details about the problems of your http(s) connection
@@ -681,16 +696,16 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
       CATCH /iwbep/cx_gateway INTO DATA(lx_gateway).
         DATA(lv_message2) = lx_gateway->get_longtext( ).
 
-          APPEND INITIAL LINE TO ct_return ASSIGNING <lfs_return>.
-          <lfs_return>-message = lv_message2.
+        APPEND INITIAL LINE TO ct_return ASSIGNING <lfs_return>.
+        <lfs_return>-message = lv_message2.
 *        lx_gateway->
         " Handle Exception
 
       CATCH cx_web_http_client_error INTO DATA(lx_web_http_client_error).
         DATA(lv_message3) = lx_web_http_client_error->get_longtext( ).
 
-          APPEND INITIAL LINE TO ct_return ASSIGNING <lfs_return>.
-          <lfs_return>-message = lv_message3.
+        APPEND INITIAL LINE TO ct_return ASSIGNING <lfs_return>.
+        <lfs_return>-message = lv_message3.
 
         " Handle Exception
         RAISE SHORTDUMP lx_web_http_client_error.
@@ -759,6 +774,7 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
     APPEND 'DOWNPAYMENTAMOUNT' TO gt_header_item.
     APPEND 'DOWNPAYMENTDUEDATE' TO gt_header_item.
     APPEND 'BR_ISPRODUCEDINHOUSE' TO gt_header_item.
+    APPEND 'DOCUMENTCURRENCY' TO gt_header_item.
 
     APPEND 'QUANTITY' TO gt_account_assign.
     APPEND 'MULTIPLEACCTASSGMTDISTRPERCENT' TO gt_account_assign.
@@ -766,10 +782,13 @@ CLASS zmm_001_cl_expense IMPLEMENTATION.
     APPEND 'WBSELEMENT' TO gt_account_assign.
     APPEND 'SETTLEMENTREFERENCEDATE' TO gt_account_assign.
 
+    APPEND 'CONDITIONTYPE' TO gt_pricing_element.
     APPEND 'CONDITIONRATEVALUE' TO gt_pricing_element.
+    APPEND 'CONDITIONCURRENCY' TO gt_pricing_element.
     APPEND 'CONDITIONQUANTITY' TO gt_pricing_element.
-    APPEND 'CONDITIONTOBASEQTYDNMNTR' TO gt_pricing_element.
     APPEND 'CONDITIONTOBASEQTYNMRTR' TO gt_pricing_element.
+    APPEND 'CONDITIONTOBASEQTYDNMNTR' TO gt_pricing_element.
+
 
     APPEND 'SCHEDULELINEDELIVERYDATE' TO gt_schedule_line.
     APPEND 'SCHEDULELINEORDERQUANTITY' TO gt_schedule_line.
